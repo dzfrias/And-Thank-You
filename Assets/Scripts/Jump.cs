@@ -11,7 +11,6 @@ public class Jump : MonoBehaviour
     private JumpController _controller;
     private Rigidbody2D _body;
     private Ground _ground;
-    private Vector2 _velocity;
     private int _jumpPhase;
 
     private void Awake()
