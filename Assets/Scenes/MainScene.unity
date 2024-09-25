@@ -1200,10 +1200,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a86354501eb0547248e8acd66039c11f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _jumpHeight: 3
-  _maxAirJumps: 0
-  _downwardMovementMultiplier: 3
-  _upwardMovementMultiplier: 1.7
+  _jumpHeight: 8
+  _maxAirJumps: 1
+  _downwardMovementMultiplier: 3.7
+  _upwardMovementMultiplier: 3.6
 --- !u!114 &693048719
 MonoBehaviour:
   m_ObjectHideFlags: 0
