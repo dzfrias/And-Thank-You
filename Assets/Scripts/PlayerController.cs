@@ -3,9 +3,12 @@ using UnityEngine;
 
 public class PlayerController : JumpController
 {
+    public float sprintSpeed;
+
     public override float GetMovement()
     {
-        return Input.GetAxisRaw("Horizontal");
+        float sprint = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : 1;
+        return Input.GetAxisRaw("Horizontal") * sprint;
     }
 
     private void Update()
