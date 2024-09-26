@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class Ground : MonoBehaviour
 {
-    public bool onGround { get; private set; }
     public float friction { get; private set; }
+    public Transform ground { get; private set; }
+
+    public bool onGround
+    {
+        get
+        {
+            return ground != null;
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -21,8 +29,8 @@ public class Ground : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        onGround = false;
         friction = 0;
+        ground = null;
     }
 
     private void EvaluateCollision(Collision2D collision)
@@ -30,7 +38,10 @@ public class Ground : MonoBehaviour
         for (int i = 0; i < collision.contactCount; i++)
         {
             Vector2 normal = collision.GetContact(i).normal;
-            onGround |= normal.y >= 0.9f;
+            if (normal.y >= 0.9f)
+            {
+                ground = collision.transform;
+            }
         }
     }
 
