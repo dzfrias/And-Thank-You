@@ -1001,6 +1001,7 @@ GameObject:
   - component: {fileID: 693048718}
   - component: {fileID: 693048719}
   - component: {fileID: 693048720}
+  - component: {fileID: 693048721}
   m_Layer: 0
   m_Name: Player
   m_TagString: player
@@ -1159,6 +1160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee2a467dba1734a18a21d228e4285ef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprintSpeed: 2
 --- !u!114 &693048716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1229,6 +1231,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e8e21d2e2bc4c44961fba3a63fbfbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &693048721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693048710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf36a0538af296844afaee71b07ac103, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 2712068378274203864, guid: 12e99f4cea9514444a37c7550a3a3d10, type: 3}
+  spawnLocation: {x: 1, y: 0, z: 0}
+  rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1001 &1037032404
 PrefabInstance:
   m_ObjectHideFlags: 0

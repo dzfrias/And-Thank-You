@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerController : JumpController
+public class PlayerController : ShootProjectileController
 {
     public float sprintSpeed;
 
@@ -16,6 +16,11 @@ public class PlayerController : JumpController
         if (Input.GetKeyDown(KeyCode.Space))
         {
             RaiseJumpEvent();
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            RaiseFireEvent();
         }
     }
 }
