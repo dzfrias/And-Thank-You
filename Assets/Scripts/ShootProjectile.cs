@@ -1,16 +1,16 @@
 using UnityEngine;
 
-[RequireComponent(typeof(ShootProjectileController))]
+[RequireComponent(typeof(IShootProjectileController))]
 public class ShootProjectile : MonoBehaviour
 {
     public GameObject projectile;
     public Vector3 spawnLocation;
     public Quaternion rotation;
 
-    private ShootProjectileController _controller;
+    private IShootProjectileController _controller;
     private void Awake()
     {
-        _controller = GetComponent<ShootProjectileController>();
+        _controller = GetComponent<IShootProjectileController>();
     }
     private void OnEnable()
     {

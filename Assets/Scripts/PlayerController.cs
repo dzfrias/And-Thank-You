@@ -1,11 +1,13 @@
 using System;
 using UnityEngine;
 
-public class PlayerController : ShootProjectileController
+public class PlayerController : MonoBehaviour, IShootProjectileController, IMovementController, IJumpController
 {
+    public event Action OnJump;
+    public event Action OnFire;
     public float sprintSpeed;
 
-    public override float GetMovement()
+    public float GetMovement()
     {
         float sprint = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : 1;
         return Input.GetAxisRaw("Horizontal") * sprint;
@@ -15,12 +17,12 @@ public class PlayerController : ShootProjectileController
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            RaiseJumpEvent();
+            OnJump?.Invoke();
         }
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            RaiseFireEvent();
+            OnFire?.Invoke();
         }
     }
 }

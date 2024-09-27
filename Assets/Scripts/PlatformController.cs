@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class PlatformController : MovementController
+public class PlatformController : MonoBehaviour, IMovementController
 {
     [SerializeField, Range(0f, 100f)] private float _rightBound = 10f;
     [SerializeField, Range(0f, 100f)] private float _leftBound = 10f;
@@ -31,7 +31,7 @@ public class PlatformController : MovementController
         }
     }
 
-    public override float GetMovement()
+    public float GetMovement()
     {
         return _direction;
     }

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class EnemyController : MovementController
+public class EnemyController : MonoBehaviour, IMovementController
 {
     // Start is called before the first frame update
     private bool _canMove;
 
-    public override float GetMovement()
+    public float GetMovement()
     {
         if (_canMove)
         {

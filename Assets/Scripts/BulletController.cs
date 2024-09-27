@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletController : MovementController
+public class BulletController : MonoBehaviour, IMovementController
 {
-    public override float GetMovement()
+    public float GetMovement()
     {
         return 1;
     }

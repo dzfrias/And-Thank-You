@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(MovementController), typeof(Rigidbody2D))]
+[RequireComponent(typeof(IMovementController), typeof(Rigidbody2D))]
 public class Move : MonoBehaviour
 {
     [SerializeField, Range(0f, 100f)] private float _maxSpeed = 4f;
@@ -9,7 +9,7 @@ public class Move : MonoBehaviour
     [SerializeField, Range(0f, 100f)] private float _maxDeceleration = 50f;
     [SerializeField, Range(0f, 100f)] private float _maxAirDeceleration = 40f;
 
-    private MovementController _controller;
+    private IMovementController _controller;
     private Vector2 _desiredVelocity;
     private Rigidbody2D _body;
     private Ground _ground;
@@ -18,7 +18,7 @@ public class Move : MonoBehaviour
     {
         _body = GetComponent<Rigidbody2D>();
         _ground = GetComponent<Ground>();
-        _controller = GetComponent<MovementController>();
+        _controller = GetComponent<IMovementController>();
     }
 
     private void Update()

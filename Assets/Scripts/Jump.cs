@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[RequireComponent(typeof(JumpController), typeof(Ground), typeof(Rigidbody2D))]
+[RequireComponent(typeof(IJumpController), typeof(Ground), typeof(Rigidbody2D))]
 public class Jump : MonoBehaviour
 {
     [SerializeField, Range(0f, 10f)] private float _jumpHeight = 3f;
@@ -8,7 +8,7 @@ public class Jump : MonoBehaviour
     [SerializeField, Range(0f, 5f)] private float _downwardMovementMultiplier = 3f;
     [SerializeField, Range(0f, 5f)] private float _upwardMovementMultiplier = 1.7f;
 
-    private JumpController _controller;
+    private IJumpController _controller;
     private Rigidbody2D _body;
     private Ground _ground;
     private int _jumpPhase;
@@ -17,7 +17,7 @@ public class Jump : MonoBehaviour
     {
         _body = GetComponent<Rigidbody2D>();
         _ground = GetComponent<Ground>();
-        _controller = GetComponent<JumpController>();
+        _controller = GetComponent<IJumpController>();
     }
 
     private void OnEnable()
