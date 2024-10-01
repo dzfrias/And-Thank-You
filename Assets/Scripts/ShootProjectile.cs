@@ -8,10 +8,12 @@ public class ShootProjectile : MonoBehaviour
     public Quaternion rotation;
 
     private IShootProjectileController _controller;
+
     private void Awake()
     {
         _controller = GetComponent<IShootProjectileController>();
     }
+
     private void OnEnable()
     {
         _controller.OnFire += FireAction;
@@ -21,6 +23,7 @@ public class ShootProjectile : MonoBehaviour
     {
         _controller.OnFire -= FireAction;
     }
+
     void FireAction()
     {
         Instantiate(projectile,spawnLocation + transform.position,rotation);

@@ -6,19 +6,13 @@ using UnityEngine;
 public class ScreenShake : MonoBehaviour
 {
     public CinemachineVirtualCamera virtualCamera;
-    // Start is called before the first frame update
-    void Start()
+
+    public void Shake(float seconds)
     {
-        
+        StartCoroutine(_Shake(seconds));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    IEnumerator screenShake(float seconds)
+    private IEnumerator _Shake(float seconds)
     {
         virtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = 5;
         yield return new WaitForSeconds(seconds);
