@@ -6,6 +6,7 @@ TagManager:
   tags:
   - playerDies
   - player
+  - bullet
   layers:
   - Default
   - TransparentFX

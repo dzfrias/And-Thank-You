@@ -5,12 +5,10 @@ public class PlayerController : MonoBehaviour, IShootProjectileController, IMove
 {
     public event Action OnJump;
     public event Action OnFire;
-    public float sprintSpeed;
 
     public float GetMovement()
     {
-        float sprint = Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : 1;
-        return Input.GetAxisRaw("Horizontal") * sprint;
+        return Input.GetAxisRaw("Horizontal");
     }
 
     private void Update()

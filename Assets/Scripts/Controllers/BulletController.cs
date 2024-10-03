@@ -11,6 +11,12 @@ public class BulletController : MonoBehaviour, IMovementController
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        StartCoroutine(_Wait(.1f));
+    }
+
+    private IEnumerator _Wait(float count)
+    {
+        yield return new WaitForSeconds(count);
         Destroy(gameObject);
     }
 }
