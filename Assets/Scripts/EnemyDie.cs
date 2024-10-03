@@ -7,8 +7,6 @@ using UnityEngine;
 public class EnemyDie : MonoBehaviour
 { 
     private Health _health;
-    [SerializeField] private GameObject _head;
-
 
     private void Awake()
     {
@@ -30,15 +28,10 @@ public class EnemyDie : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.otherCollider.name);
         if (collision.otherCollider.name == "Enemy Dies" && collision.collider.name == "Player")
         {
             _health.TakeDamage(5);
             return;
-        }
-        if (collision.collider.CompareTag("bullet"))
-        {
-            _health.TakeDamage(1);
         }
     }
 
