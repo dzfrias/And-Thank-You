@@ -30,8 +30,12 @@ public class EnemyDie : MonoBehaviour
     {
         if (collision.otherCollider.name == "Enemy Dies" && collision.collider.name == "Player")
         {
-            _health.TakeDamage(5);
+            _health.TakeDamage(1000);
             return;
+        }
+        if (collision.collider.CompareTag("spike"))
+        {
+            _health.TakeDamage(1000);
         }
     }
 

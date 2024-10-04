@@ -50,7 +50,7 @@ public class PlayerDie : MonoBehaviour
         {
             return;
         }
-        if (collision.collider.CompareTag("playerDies"))
+        if (collision.collider.CompareTag("playerDies") || collision.collider.CompareTag("spike"))
         {
             _health.TakeDamage(1);
         }

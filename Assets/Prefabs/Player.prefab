@@ -233,9 +233,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e8e21d2e2bc4c44961fba3a63fbfbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rb: {fileID: 815687877553801248}
-  _knockback_x: 0
-  _knockback_y: 0
+  _blinkSpeed: 0.1
 --- !u!114 &4455713015926682132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,3 +247,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
+  health: 0
