@@ -6,7 +6,8 @@ public class Health : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
     public event Action OnDie;
-    private int health;
+    public event Action OnTakeDamage;
+    public int health;
 
 
     private void Awake()
@@ -22,6 +23,11 @@ public class Health : MonoBehaviour
             OnDie?.Invoke();
             health = 0;
         }
+        else
+        {
+            OnTakeDamage?.Invoke();
+        }
+        
     }
 
     public void Heal(int healthHealed,bool canOverheal)

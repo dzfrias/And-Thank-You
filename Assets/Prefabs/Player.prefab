@@ -234,8 +234,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rb: {fileID: 815687877553801248}
-  _knockback_x: 100
-  _knockback_y: 100
+  _knockback_x: 0
+  _knockback_y: 0
 --- !u!114 &4455713015926682132
 MonoBehaviour:
   m_ObjectHideFlags: 0

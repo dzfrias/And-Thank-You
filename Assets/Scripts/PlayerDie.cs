@@ -7,13 +7,13 @@ using UnityEngine.SceneManagement;
 public class PlayerDie : MonoBehaviour
 {
     private Health _health;
-    [SerializeField] private Rigidbody2D _rb;
-    [SerializeField] private int _knockback_x;
-    [SerializeField] private int _knockback_y;
+    private bool isInvincible = false;
+    [SerializeField] private float _blinkSpeed;
     private void Awake()
     {
         _health = GetComponent<Health>();
         _health.OnDie += DieAction;
+        _health.OnTakeDamage += DamageAction;
     }
 
     private void DieAction()
@@ -21,13 +21,38 @@ public class PlayerDie : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+
+    private void DamageAction() 
+    {
+        StartCoroutine(_Invincibility(1f));
+    }
+
+    private IEnumerator _Invincibility(float time)
+    {
+        isInvincible = true;
+        var remainder = time % _blinkSpeed;
+        var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        for (int i = 0; i < Mathf.Floor(time / _blinkSpeed); i++)
+        {
+            spriteRenderer.enabled = !spriteRenderer.enabled;
+            yield return new WaitForSeconds(_blinkSpeed);
+        }
+        yield return new WaitForSeconds(remainder);
+        spriteRenderer.enabled = true;
+        isInvincible = false;
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log(_health.health);
+        
+        if (isInvincible)
+        {
+            return;
+        }
         if (collision.collider.CompareTag("playerDies"))
         {
             _health.TakeDamage(1);
-            //transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z);
-            _rb.AddForce(new Vector2(_knockback_x * -(transform.forward.x > 0 ? 1 : -1), _knockback_y));
         }
     }
 }
