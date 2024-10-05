@@ -22,7 +22,7 @@ public static class GameObjectExt
 
     public static PlayerRef? AsPlayer(this GameObject gameObject)
     {
-        if (!gameObject.CompareTag("player")) return null;
+        if (!gameObject.CompareTag("Player")) return null;
         if (_cache is not null) return _cache;
         var health = gameObject.GetComponent<Health>();
         var rigidbody = gameObject.GetComponent<Rigidbody2D>();
