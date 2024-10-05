@@ -32,6 +32,12 @@ public class EnemyController : MonoBehaviour, IMovementController
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.collider.CompareTag("player"))
+        {
+            var playerHealth = collision.collider.transform.GetComponent<Health>();
+            playerHealth.TakeDamage(1);
+            return;
+        }
         for (int i = 0; i < collision.contactCount; i++)
         {
             Vector2 normal = collision.GetContact(i).normal;
@@ -40,6 +46,13 @@ public class EnemyController : MonoBehaviour, IMovementController
                 _movement = normal.x > 0 ? 1 : -1;
             }
         }
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (!collision.collider.CompareTag("player")) return;
+        var playerHealth = collision.collider.transform.GetComponent<Health>();
+        playerHealth.TakeDamage(1);
     }
 
     private void Flip()

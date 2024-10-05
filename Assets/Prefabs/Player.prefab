@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 142824044661038580}
   - component: {fileID: 3549467624779898859}
   - component: {fileID: 4455713015926682132}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Player
   m_TagString: player
   m_Icon: {fileID: 0}
@@ -111,10 +111,10 @@ BoxCollider2D:
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 191
   m_ForceReceiveLayers:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 191
   m_ContactCaptureLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -247,4 +247,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  health: 0
+  isInvincible: 0

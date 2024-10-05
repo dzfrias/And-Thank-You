@@ -28,7 +28,10 @@ public class Move : MonoBehaviour
         if (_ground != null && _ground.onGround)
         {
             Rigidbody2D groundBody = _ground.ground.GetComponent<Rigidbody2D>();
-            _desiredVelocity += groundBody.velocity;
+            if (groundBody)
+            {
+                _desiredVelocity += groundBody.velocity;
+            }
         }
     }
 

@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Health))]
 public class PlayerDie : MonoBehaviour
 {
-    private Health _health;
-    private bool isInvincible = false;
     [SerializeField] private float _blinkSpeed;
+    private Health _health;
+
     private void Awake()
     {
         _health = GetComponent<Health>();
@@ -21,15 +21,17 @@ public class PlayerDie : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-
-    private void DamageAction() 
+    private void DamageAction(int damage) 
     {
         StartCoroutine(_Invincibility(1f));
     }
 
     private IEnumerator _Invincibility(float time)
     {
-        isInvincible = true;
+        _health.isInvincible = true;
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(.4f);
+        Time.timeScale = 1f;
         var remainder = time % _blinkSpeed;
         var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         for (int i = 0; i < Mathf.Floor(time / _blinkSpeed); i++)
@@ -39,20 +41,6 @@ public class PlayerDie : MonoBehaviour
         }
         yield return new WaitForSeconds(remainder);
         spriteRenderer.enabled = true;
-        isInvincible = false;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log(_health.health);
-        
-        if (isInvincible)
-        {
-            return;
-        }
-        if (collision.collider.CompareTag("playerDies") || collision.collider.CompareTag("spike"))
-        {
-            _health.TakeDamage(1);
-        }
+        _health.isInvincible = false;
     }
 }

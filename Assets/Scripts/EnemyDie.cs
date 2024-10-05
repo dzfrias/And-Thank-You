@@ -25,18 +25,4 @@ public class EnemyDie : MonoBehaviour
         Destroy(gameObject);
         
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.otherCollider.name == "Enemy Dies" && collision.collider.name == "Player")
-        {
-            _health.TakeDamage(1000);
-            return;
-        }
-        if (collision.collider.CompareTag("spike"))
-        {
-            _health.TakeDamage(1000);
-        }
-    }
-
 }

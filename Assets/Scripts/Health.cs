@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int maxHealth;
     public event Action OnDie;
-    public event Action OnTakeDamage;
-    public int health;
+    public event Action<int> OnTakeDamage;
 
+    [SerializeField] private int maxHealth;
+    [HideInInspector] public bool isInvincible;
+    private int health;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class Health : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        if (isInvincible) return;
         health -= damage;
         if (health <= 0)
         {
@@ -25,17 +27,19 @@ public class Health : MonoBehaviour
         }
         else
         {
-            OnTakeDamage?.Invoke();
+            OnTakeDamage?.Invoke(damage);
         }
         
     }
 
-    public void Heal(int healthHealed,bool canOverheal)
+    public void Heal(int amount)
     {
-        health += healthHealed;
-        if (health > maxHealth && !canOverheal)
-        {
-            health = maxHealth;
-        }
+        health = Mathf.Clamp(health + amount, 0, maxHealth);
+    }
+
+    public void Kill()
+    {
+        health = 0;
+        OnDie?.Invoke();
     }
 }

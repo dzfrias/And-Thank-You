@@ -17,12 +17,14 @@ public class Ground : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.collider.gameObject.layer != LayerMask.NameToLayer("Ground")) return;
         EvaluateCollision(collision);
         GetFriction(collision);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+        if (collision.collider.gameObject.layer != LayerMask.NameToLayer("Ground")) return;
         EvaluateCollision(collision);
         GetFriction(collision);
     }
@@ -47,6 +49,7 @@ public class Ground : MonoBehaviour
 
     private void GetFriction(Collision2D collision)
     {
+        if (!collision.rigidbody || !collision.rigidbody.sharedMaterial) return;
         PhysicsMaterial2D material = collision.rigidbody.sharedMaterial;
         friction = 0;
         if (material != null)
