@@ -1,27 +1,27 @@
 using UnityEngine;
 
-[RequireComponent(typeof(IShootProjectileController))]
+[RequireComponent(typeof(IAttackController))]
 public class ShootProjectile : MonoBehaviour
 {
     public GameObject projectile;
     public Vector3 spawnLocation;
     public Quaternion rotation;
 
-    private IShootProjectileController _controller;
+    private IAttackController _controller;
 
     private void Awake()
     {
-        _controller = GetComponent<IShootProjectileController>();
+        _controller = GetComponent<IAttackController>();
     }
 
     private void OnEnable()
     {
-        _controller.OnFire += FireAction;
+        _controller.OnAttack += FireAction;
     }
 
     private void OnDisable()
     {
-        _controller.OnFire -= FireAction;
+        _controller.OnAttack -= FireAction;
     }
 
     void FireAction()

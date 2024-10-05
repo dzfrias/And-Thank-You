@@ -1,9 +1,10 @@
 using System;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour, IMovementController, IJumpController
+public class PlayerController : MonoBehaviour, IMovementController, IJumpController, IAttackController
 {
     public event Action OnJump;
+    public event Action OnAttack;
 
     public float GetMovement()
     {
@@ -15,6 +16,10 @@ public class PlayerController : MonoBehaviour, IMovementController, IJumpControl
         if (Input.GetKeyDown(KeyCode.Space))
         {
             OnJump?.Invoke();
+        }
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            OnAttack?.Invoke();
         }
     }
 }

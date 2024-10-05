@@ -12,12 +12,11 @@ GameObject:
   - component: {fileID: 4684111486111991352}
   - component: {fileID: 365562479399473335}
   - component: {fileID: 1947153810882809812}
-  - component: {fileID: 3598879911177893216}
   - component: {fileID: 903115480372840995}
   - component: {fileID: 3958098706923072605}
   - component: {fileID: 6323682962920146830}
   - component: {fileID: 6851118976465231124}
-  - component: {fileID: 3631177695661643047}
+  - component: {fileID: 1295493657864929151}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -131,18 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4357ac9bbfd37d4a97abfcfddafaeb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3598879911177893216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3149086605685959190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19f519e7b7baa40e2b772f2beb1b1c9b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  stunTime: 0.5
 --- !u!114 &903115480372840995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,7 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   isInvincible: 0
---- !u!114 &3631177695661643047
+--- !u!114 &1295493657864929151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -240,6 +228,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3149086605685959190}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05363a686c5774c40ab5981e7d336d7b, type: 3}
+  m_Script: {fileID: 11500000, guid: 866b544921df14f7e9f2b566f31cccdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

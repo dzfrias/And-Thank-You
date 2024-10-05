@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Health))]
-public class PlayerDie : MonoBehaviour
+public class PlayerHit : MonoBehaviour
 {
-    [SerializeField] private float _blinkSpeed;
+    public float invincibilityTime = 1f;
+    public float blinkSpeed = 0.1f;
+
     private Health _health;
 
     private void Awake()
@@ -23,21 +25,21 @@ public class PlayerDie : MonoBehaviour
 
     private void DamageAction(int damage) 
     {
-        StartCoroutine(_Invincibility(1f));
+        StartCoroutine(Invincibility());
     }
 
-    private IEnumerator _Invincibility(float time)
+    private IEnumerator Invincibility()
     {
         _health.isInvincible = true;
         Time.timeScale = 0f;
         yield return new WaitForSecondsRealtime(.4f);
         Time.timeScale = 1f;
-        var remainder = time % _blinkSpeed;
+        var remainder = invincibilityTime % blinkSpeed;
         var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        for (int i = 0; i < Mathf.Floor(time / _blinkSpeed); i++)
+        for (int i = 0; i < Mathf.Floor(invincibilityTime / blinkSpeed); i++)
         {
             spriteRenderer.enabled = !spriteRenderer.enabled;
-            yield return new WaitForSeconds(_blinkSpeed);
+            yield return new WaitForSeconds(blinkSpeed);
         }
         yield return new WaitForSeconds(remainder);
         spriteRenderer.enabled = true;

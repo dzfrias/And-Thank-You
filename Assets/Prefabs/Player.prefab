@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: 142824044661038580}
   - component: {fileID: 3549467624779898859}
   - component: {fileID: 4455713015926682132}
+  - component: {fileID: 740664185059897409}
+  - component: {fileID: 5121313798266860818}
   m_Layer: 3
   m_Name: Player
   m_TagString: player
@@ -248,3 +250,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   isInvincible: 0
+--- !u!114 &740664185059897409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6603654789077810694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 889a37f029af14048a1d16dbb13d27a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackOffset: {x: 0.93, y: 0}
+  attackSize: {x: 1.9, y: 2}
+  hitForce: 400
+--- !u!114 &5121313798266860818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6603654789077810694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866b544921df14f7e9f2b566f31cccdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

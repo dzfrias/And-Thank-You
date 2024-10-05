@@ -1,16 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Ground), typeof(Collider2D))]
+[RequireComponent(typeof(Ground), typeof(Collider2D), typeof(Health))]
 public class EnemyController : MonoBehaviour, IMovementController
 {
+    public float stunTime = 0.2f;
+
     private Ground _ground;
     private Collider2D _collider;
+    private Health _health;
     private float _movement = 1f;
+    private float stun;
 
-    private void Start()
+    private void Awake()
     {
         _ground = GetComponent<Ground>();
         _collider = GetComponent<Collider2D>();
+        _health = GetComponent<Health>();
+    }
+
+    private void OnEnable()
+    {
+        _health.OnTakeDamage += OnTakeDamage;
+        _health.OnDie += OnDie;
+    }
+
+    private void OnDisable()
+    {
+        _health.OnTakeDamage -= OnTakeDamage;
+        _health.OnDie -= OnDie;
     }
 
     private void Update()
@@ -22,11 +41,12 @@ public class EnemyController : MonoBehaviour, IMovementController
         {
             Flip();
         }
+        stun = Mathf.Max(stun - Time.deltaTime, 0f);
     }
 
     public float GetMovement()
     {
-        if (!_ground.onGround) return 0;
+        if (!_ground.onGround || stun > 0) return 0;
         return _movement;
     }
 
@@ -58,5 +78,21 @@ public class EnemyController : MonoBehaviour, IMovementController
     private void Flip()
     {
         _movement *= -1;
+    }
+
+    private void OnTakeDamage(int damage)
+    {
+        stun += stunTime;
+    }
+
+    private void OnDie()
+    {
+        StartCoroutine(_OnDie());
+    }
+
+    private IEnumerator _OnDie()
+    {
+        yield return new WaitForSeconds(.1f);
+        Destroy(gameObject);
     }
 }
