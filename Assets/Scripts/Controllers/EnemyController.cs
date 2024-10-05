@@ -52,12 +52,7 @@ public class EnemyController : MonoBehaviour, IMovementController
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("player"))
-        {
-            var playerHealth = collision.collider.transform.GetComponent<Health>();
-            playerHealth.TakeDamage(1);
-            return;
-        }
+        TryDoDamage(collision);
         for (int i = 0; i < collision.contactCount; i++)
         {
             Vector2 normal = collision.GetContact(i).normal;
@@ -70,9 +65,17 @@ public class EnemyController : MonoBehaviour, IMovementController
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (!collision.collider.CompareTag("player")) return;
-        var playerHealth = collision.collider.transform.GetComponent<Health>();
-        playerHealth.TakeDamage(1);
+        TryDoDamage(collision);
+    }
+
+    private void TryDoDamage(Collision2D collision)
+    {
+        if (collision.gameObject.AsPlayer() is PlayerRef player)
+        {
+            var playerHealth = player.health;
+            playerHealth.TakeDamage(1);
+            return;
+        }
     }
 
     private void Flip()

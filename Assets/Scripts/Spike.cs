@@ -7,12 +7,13 @@ public class Spike : MonoBehaviour
 {
     private void OnCollisionStay2D(Collision2D collision)
     {
-        var health = collision.collider.transform.GetComponent<Health>();
-        if (collision.collider.CompareTag("player"))
+        if (collision.gameObject.AsPlayer() is PlayerRef player)
         {
-            health.TakeDamage(1);
+            var playerHealth = player.health;
+            playerHealth.TakeDamage(1);
             return;
         }
-        health.Kill();
+        var health = collision.collider.transform.GetComponent<Health>();
+        health?.Kill();
     }
 }
