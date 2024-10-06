@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public struct PlayerRef
 {
@@ -28,6 +29,7 @@ public static class GameObjectExt
         var rigidbody = gameObject.GetComponent<Rigidbody2D>();
         var collider = gameObject.GetComponent<Collider2D>();
         _cache = new PlayerRef(health, rigidbody, collider, gameObject.transform);
+        SceneManager.sceneLoaded += OnSceneLoaded;
         return _cache;
     }
 
@@ -38,8 +40,20 @@ public static class GameObjectExt
         var health = player.GetComponent<Health>();
         var rigidbody = player.GetComponent<Rigidbody2D>();
         var collider = player.GetComponent<Collider2D>();
-        var newRef = new PlayerRef(health, rigidbody, collider, player.transform);;
+        var newRef = new PlayerRef(health, rigidbody, collider, player.transform);
         _cache = newRef;
+        SceneManager.sceneLoaded += OnSceneLoaded;
         return newRef;
+    }
+
+    private static void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // We need to refresh the cache when a new scene loads. This is because
+        // new objects are created when a new scene loads (the old PlayerRef 
+        // data should be garbage collected). Holding on to our old PlayerRef
+        // not only creates memory leaks, but also makes any reference to our 
+        // player go to an object that doesn't exist in our scene (it goes to 
+        // the old one).
+        _cache = null;
     }
 }
