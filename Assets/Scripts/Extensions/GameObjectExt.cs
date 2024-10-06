@@ -30,4 +30,16 @@ public static class GameObjectExt
         _cache = new PlayerRef(health, rigidbody, collider, gameObject.transform);
         return _cache;
     }
+
+    public static PlayerRef Player(this GameObject gameObject)
+    {
+        if (_cache is PlayerRef ref_) return ref_;
+        var player = GameObject.FindWithTag("Player");
+        var health = player.GetComponent<Health>();
+        var rigidbody = player.GetComponent<Rigidbody2D>();
+        var collider = player.GetComponent<Collider2D>();
+        var newRef = new PlayerRef(health, rigidbody, collider, player.transform);;
+        _cache = newRef;
+        return newRef;
+    }
 }

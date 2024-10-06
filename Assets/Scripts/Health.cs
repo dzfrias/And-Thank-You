@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
 
     [SerializeField] private int maxHealth;
     [HideInInspector] public bool isInvincible;
-    private int health;
+    public int health { get; private set; }
 
     private void Awake()
     {
