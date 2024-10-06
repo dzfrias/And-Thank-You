@@ -6,26 +6,20 @@ using UnityEngine;
 public class AnimateMove : MonoBehaviour
 {
     [SerializeField] private string _moveParameterName = "Speed";
-    [SerializeField] private string _jumpParameterName = "IsJumping";
+    [SerializeField] private string _jumpParameterName = "Jump";
+    [SerializeField] private string _attackParameterName = "Attack";
 
     private Animator _animator;
     private IMovementController _moveController;
     private IJumpController _jumpController;
-    private Ground _ground;
-
-    private bool canReturn = true;
+    private IAttackController _attackController;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
         _moveController = GetComponent<IMovementController>();
-
+        _attackController = GetComponent<IAttackController>();
         _jumpController = GetComponent<IJumpController>();
-        _ground = GetComponent<Ground>();
-        if ((_jumpController != null && _ground == null) || (_jumpController == null && _ground != null))
-        {
-            Debug.LogError("Ground component must accompany jump controller");
-        }
     }
 
     private void OnEnable()
@@ -34,6 +28,10 @@ public class AnimateMove : MonoBehaviour
         {
             _jumpController.OnJump += OnJump;
         }
+        if (_attackController != null)
+        {
+            _attackController.OnAttack += OnAttack;
+        }
     }
 
     private void OnDisable()
@@ -41,6 +39,10 @@ public class AnimateMove : MonoBehaviour
         if (_jumpController != null)
         {
             _jumpController.OnJump -= OnJump;
+        }
+        if (_attackController != null)
+        {
+            _attackController.OnAttack -= OnAttack;
         }
     }
 
@@ -51,23 +53,15 @@ public class AnimateMove : MonoBehaviour
             float xMovement = _moveController.GetMovement();
             _animator.SetFloat(_moveParameterName, Mathf.Abs(xMovement));
         }
-
-        if (_jumpController != null && _animator.GetBool(_jumpParameterName) && _ground.onGround && canReturn)
-        {
-            _animator.SetBool(_jumpParameterName, false);
-        }
     }
 
     private void OnJump()
     {
-        _animator.SetBool(_jumpParameterName, true);
-        StartCoroutine(CanReturn());
+        _animator.SetTrigger(_jumpParameterName);
     }
 
-    private IEnumerator CanReturn()
+    private void OnAttack()
     {
-        canReturn = false;
-        yield return new WaitForSeconds(0.2f);
-        canReturn = true;
+        _animator.SetTrigger(_attackParameterName);
     }
 }

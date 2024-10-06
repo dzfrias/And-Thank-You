@@ -1960,7 +1960,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthIcon: {fileID: 3850496581740164524, guid: 405a7c5f196754b93a14ec525398e3bd, type: 3}
-  _spacing: 30
 --- !u!114 &1460600825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2852,10 +2851,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4455713015926682132, guid: 2ace73c387c6741d4ab699c42e376166, type: 3}
-      propertyPath: maxHealth
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 5226781310912550129, guid: 2ace73c387c6741d4ab699c42e376166, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5

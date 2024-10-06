@@ -314,4 +314,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveParameterName: Speed
-  _jumpParameterName: IsJumping
+  _jumpParameterName: Jump
+  _attackParameterName: Attack
