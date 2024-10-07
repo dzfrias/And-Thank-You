@@ -8,6 +8,12 @@ public class ShootProjectile : MonoBehaviour
     public Quaternion rotation;
 
     private IAttackController _controller;
+    private Direction _direction;
+
+    private void Start()
+    {
+        _direction = GetComponent<Direction>();
+    }
 
     private void Awake()
     {
@@ -26,6 +32,6 @@ public class ShootProjectile : MonoBehaviour
 
     void FireAction()
     {
-        Instantiate(projectile,spawnLocation + transform.position,rotation);
+        Instantiate(projectile,spawnLocation + new Vector3((_direction.IsRight() ? -1 : 1),0,0) + transform.position,(_direction.IsRight() ? Quaternion.identity : new Quaternion(0,1,0,180)));
     }
 }

@@ -6,17 +6,16 @@ public class BulletController : MonoBehaviour, IMovementController
 {
     public float GetMovement()
     {
-        return 1;
+        return (transform.forward.x > 0 ? 1: -1);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        StartCoroutine(_Wait(.1f));
-    }
-
-    private IEnumerator _Wait(float count)
-    {
-        yield return new WaitForSeconds(count);
+        if (collision.gameObject.AsPlayer() is PlayerRef player)
+        {
+            var playerHealth = player.health;
+            playerHealth.TakeDamage(1);
+        }
         Destroy(gameObject);
     }
 }

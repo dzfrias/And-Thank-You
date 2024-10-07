@@ -3,18 +3,20 @@ using UnityEngine.SceneManagement;
 
 public struct PlayerRef
 {
-    internal PlayerRef(Health health, Rigidbody2D rigidbody, Collider2D collider, Transform transform)
+    internal PlayerRef(Health health, Rigidbody2D rigidbody, Collider2D collider, Transform transform, Direction direction)
     {
         this.health = health;
         this.rigidbody = rigidbody;
         this.collider = collider;
         this.transform = transform;
+        this.direction = direction;
     }
 
     public Health health { get; }
     public Rigidbody2D rigidbody { get; }
     public Collider2D collider { get; }
     public Transform transform { get; }
+    public Direction direction { get; }
 }
 
 public static class GameObjectExt
@@ -28,7 +30,8 @@ public static class GameObjectExt
         var health = gameObject.GetComponent<Health>();
         var rigidbody = gameObject.GetComponent<Rigidbody2D>();
         var collider = gameObject.GetComponent<Collider2D>();
-        _cache = new PlayerRef(health, rigidbody, collider, gameObject.transform);
+        var direction = gameObject.GetComponent<Direction>();
+        _cache = new PlayerRef(health, rigidbody, collider, gameObject.transform,direction);
         SceneManager.sceneLoaded += OnSceneLoaded;
         return _cache;
     }
@@ -40,7 +43,8 @@ public static class GameObjectExt
         var health = player.GetComponent<Health>();
         var rigidbody = player.GetComponent<Rigidbody2D>();
         var collider = player.GetComponent<Collider2D>();
-        var newRef = new PlayerRef(health, rigidbody, collider, player.transform);
+        var direction = player.GetComponent<Direction>();
+        var newRef = new PlayerRef(health, rigidbody, collider, player.transform, direction);
         _cache = newRef;
         SceneManager.sceneLoaded += OnSceneLoaded;
         return newRef;
