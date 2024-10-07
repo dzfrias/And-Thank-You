@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthUI : MonoBehaviour
 {
@@ -8,18 +9,9 @@ public class HealthUI : MonoBehaviour
 
     private Health _playerHealth;
 
-    private void Awake()
-    {
-        _playerHealth = gameObject.Player().health;
-    }
-
     private void Start()
     {
         UpdateHealth();
-    }
-
-    private void OnEnable()
-    {
         _playerHealth.OnTakeDamage += UpdateHealth;
     }
 
@@ -30,6 +22,7 @@ public class HealthUI : MonoBehaviour
 
     private void UpdateHealth(int damage = 0)
     {
+        _playerHealth = gameObject.Player().health;
         if (transform.childCount > _playerHealth.health)
         {
             for (int i = _playerHealth.health; i < transform.childCount; i++)
