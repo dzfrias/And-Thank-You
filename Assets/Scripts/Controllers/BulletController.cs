@@ -36,11 +36,12 @@ public class BulletController : MonoBehaviour, IMovementController
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.AsPlayer() is PlayerRef player)
+        if (collision.gameObject.GetComponent<Health>() != null)
         {
-            var playerHealth = player.health;
-            playerHealth.TakeDamage(1);
+            var health = collision.gameObject.GetComponent<Health>();
+            health.TakeDamage(1);
         }
+
         Destroy(gameObject);
     }
 }
