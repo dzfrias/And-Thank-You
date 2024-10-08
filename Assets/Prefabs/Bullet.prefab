@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 5767589320180011175}
   - component: {fileID: 6065971587529311804}
   - component: {fileID: 42276117858208122}
-  - component: {fileID: 1885945651346125068}
   - component: {fileID: 6281611425256070034}
   - component: {fileID: -9140106691617512525}
-  m_Layer: 0
+  - component: {fileID: 2180558198188786493}
+  m_Layer: 6
   m_Name: Bullet
   m_TagString: bullet
   m_Icon: {fileID: 0}
@@ -102,6 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae2069c3690cc6439fe45d9a8cba0c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hitSpeed: 2
+  _speed: 10
 --- !u!114 &6065971587529311804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,23 +143,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1885945651346125068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2712068378274203864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7311869b7bf14062af319bb8acfc406, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxSpeed: 4
-  _maxAcceleration: 35
-  _maxAirAcceleration: 20
-  _maxDeceleration: 50
-  _maxAirDeceleration: 40
 --- !u!61 &6281611425256070034
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -215,5 +200,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737913e225f58f441b1e8416cfc8e1b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 1
+  maxHealth: 100000
   isInvincible: 0
+--- !u!114 &2180558198188786493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2712068378274203864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f30b569dd663cb4da31794573039f28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

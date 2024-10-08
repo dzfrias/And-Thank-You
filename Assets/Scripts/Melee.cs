@@ -32,7 +32,7 @@ public class Melee : MonoBehaviour
         float k = _direction?.AsSign() ?? 1;
         Collider2D collider = Physics2D.OverlapBox(transform.position + new Vector3(attackOffset.x * k, attackOffset.y, 0), attackSize, 0f, layerMask);
         if (!collider) return;
-        var health = collider.transform.GetComponent<Health>();
+        var health = collider.GetComponent<Health>();
         health.TakeDamage(1);
         if (hitForce != 0)
         {
