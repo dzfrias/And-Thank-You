@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     public event Action OnDie;
     public event Action<int> OnTakeDamage;
+    public event Action<int> OnHeal;
 
     [SerializeField] private int maxHealth;
     [HideInInspector] public bool isInvincible;
@@ -35,6 +36,7 @@ public class Health : MonoBehaviour
     public void Heal(int amount)
     {
         health = Mathf.Clamp(health + amount, 0, maxHealth);
+        OnHeal?.Invoke(health);
     }
 
     public void Kill()

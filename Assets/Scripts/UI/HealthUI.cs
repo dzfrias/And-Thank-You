@@ -13,11 +13,13 @@ public class HealthUI : MonoBehaviour
     {
         UpdateHealth();
         _playerHealth.OnTakeDamage += UpdateHealth;
+        _playerHealth.OnHeal += UpdateHealth;
     }
 
     private void OnDisable()
     {
         _playerHealth.OnTakeDamage -= UpdateHealth;
+        _playerHealth.OnHeal -= UpdateHealth;
     }
 
     private void UpdateHealth(int damage = 0)
