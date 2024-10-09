@@ -163,10 +163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2361cc55844724689fcce5c7e6dd9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 50
+  _runAwayDistance: 4
   _bullet: {fileID: 2712068378274203864, guid: 12e99f4cea9514444a37c7550a3a3d10, type: 3}
   _shootSpeed: 2
-  stunTime: 0.2
+  _stunTime: 0.75
 --- !u!50 &8209240997616158717
 Rigidbody2D:
   serializedVersion: 4
@@ -206,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7311869b7bf14062af319bb8acfc406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 4
+  _maxSpeed: 1
   _maxAcceleration: 35
   _maxAirAcceleration: 20
   _maxDeceleration: 50

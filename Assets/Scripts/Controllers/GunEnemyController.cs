@@ -5,17 +5,17 @@ using UnityEngine.Rendering;
 
 public class GunEnemyController : MonoBehaviour, IMovementController, IAttackController
 {
-    [SerializeField] private int _moveSpeed;
+    [SerializeField] private float _runAwayDistance = 4f;
     [SerializeField] private GameObject _bullet;
     [SerializeField] private float _shootSpeed;
-    private PlayerRef _player;
-
-    public float stunTime = 0.2f;
+    [SerializeField] private float _stunTime = 0.2f;
 
     private Ground _ground;
     private Collider2D _collider;
     private Health _health;
-    private float stun;
+    private float _stun;
+    private float _attackCooldown;
+    private PlayerRef _player;
 
     public event Action OnAttack;
 
@@ -30,6 +30,7 @@ public class GunEnemyController : MonoBehaviour, IMovementController, IAttackCon
         while (true)
         {
             yield return new WaitForSeconds(_shootSpeed);
+            if (_stun > 0) continue;
             OnAttack?.Invoke();
         }
     }
@@ -77,7 +78,12 @@ public class GunEnemyController : MonoBehaviour, IMovementController, IAttackCon
 
     private void OnTakeDamage(int damage)
     {
-        stun += stunTime;
+        _stun += _stunTime;
+    }
+
+    private void Update()
+    {
+        _stun = Mathf.Max(_stun - Time.deltaTime, 0f);
     }
 
     private void OnDie()
@@ -93,13 +99,13 @@ public class GunEnemyController : MonoBehaviour, IMovementController, IAttackCon
 
     public float GetMovement()
     {
-        if (!_ground.onGround) return 0;
+        if (!_ground.onGround || _stun > 0) return 0;
 
         var groundCollider = _ground.ground.GetComponent<Collider2D>();
-        float distance = Mathf.Sqrt(Mathf.Pow(_player.transform.position.x - transform.position.x,2)+ Mathf.Pow(_player.transform.position.y - transform.position.y, 2));
-        if (distance < 4)
+        float distance = Mathf.Abs(_player.transform.position.x - transform.position.x);
+        if (distance < _runAwayDistance)
         {
-            return (_player.transform.position.x < transform.position.x ? 1 : -1) * _moveSpeed * Time.deltaTime;
+            return (_player.transform.position.x < transform.position.x ? 1 : -1);
         }
         return 0;
     }

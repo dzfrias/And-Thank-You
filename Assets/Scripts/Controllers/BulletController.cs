@@ -29,6 +29,7 @@ public class BulletController : MonoBehaviour, IMovementController
         Time.timeScale = 1;
         _direction *= -_hitSpeed;
     }
+
     public float GetMovement()
     {
         return (transform.forward.x > 0 ? 1: -1) * _direction * _speed;

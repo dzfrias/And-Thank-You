@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour, IMovementController
     private Collider2D _collider;
     private Health _health;
     private float _movement = 1f;
-    private float stun;
+    private float _stun;
 
 
     private void Awake()
@@ -42,12 +42,12 @@ public class EnemyController : MonoBehaviour, IMovementController
         {
             Flip();
         }
-        stun = Mathf.Max(stun - Time.deltaTime, 0f);
+        _stun = Mathf.Max(_stun - Time.deltaTime, 0f);
     }
 
     public float GetMovement()
     {
-        if (!_ground.onGround || stun > 0) return 0;
+        if (!_ground.onGround || _stun > 0) return 0;
         return _movement;
     }
 
@@ -86,7 +86,7 @@ public class EnemyController : MonoBehaviour, IMovementController
 
     private void OnTakeDamage(int damage)
     {
-        stun += stunTime;
+        _stun += stunTime;
     }
 
     private void OnDie()
