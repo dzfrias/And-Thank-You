@@ -23,6 +23,11 @@ public class Move : MonoBehaviour
         _direction = GetComponent<Direction>();
     }
 
+    public void SetMaxSpeed(float speed)
+    {
+        _maxSpeed = speed;
+    }
+
     private void Update()
     {
         float xMovement = _controller.GetMovement();

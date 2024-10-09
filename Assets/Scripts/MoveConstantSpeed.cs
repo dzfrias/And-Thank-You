@@ -6,6 +6,7 @@ using UnityEngine;
 public class MoveConstantSpeed : MonoBehaviour
 {
     private IMovementController _controller;
+
     private void Awake()
     {
         _controller = GetComponent<IMovementController>();
@@ -13,6 +14,6 @@ public class MoveConstantSpeed : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(new Vector3(_controller.GetMovement() * Time.deltaTime,0,0));
+        transform.Translate(new Vector3(_controller.GetMovement() * Time.deltaTime, 0, 0));
     }
 }

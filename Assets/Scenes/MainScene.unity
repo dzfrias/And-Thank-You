@@ -7432,7 +7432,7 @@ GameObject:
   - component: {fileID: 1906962436}
   - component: {fileID: 1906962435}
   m_Layer: 7
-  m_Name: StickyPlatform
+  m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7454,7 +7454,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: 948a726b4874a45939b714bb59d3cdc4, type: 2}
+  m_Material: {fileID: 6200000, guid: 37b1f138741a34f66b1bc3613c1238de, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -7552,7 +7552,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.19824672, g: 0.5188679, b: 0.2520084, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
