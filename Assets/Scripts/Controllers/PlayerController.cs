@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour, IMovementController, IJumpControl
         {
             OnJump?.Invoke();
         }
-        if (Input.GetKeyDown(KeyCode.F) && canAttack)
+        if (Input.GetMouseButtonDown(0) && canAttack)
         {
             OnAttack?.Invoke();
             StartCoroutine(AttackCooldown());
