@@ -53,6 +53,11 @@ public class EnemyController : MonoBehaviour, IMovementController
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.collider.gameObject.layer == 7)
+        {
+            Flip();
+            return;
+        }
         TryDoDamage(collision);
         for (int i = 0; i < collision.contactCount; i++)
         {
