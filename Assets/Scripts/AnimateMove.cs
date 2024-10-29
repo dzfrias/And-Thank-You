@@ -56,7 +56,7 @@ public class AnimateMove : MonoBehaviour
             float xMovement = _moveController.GetMovement();
             _animator.SetFloat(_moveParameterName, Mathf.Abs(xMovement));
         }
-        if (_ground != null)
+        if (_ground != null && HasParameter(_fallParameterName))
         {
             _animator.SetBool(_fallParameterName, !_ground.onGround);
         }
@@ -70,5 +70,17 @@ public class AnimateMove : MonoBehaviour
     private void OnAttack()
     {
         _animator.SetTrigger(_attackParameterName);
+    }
+
+    private bool HasParameter(string paramName)
+    {
+        foreach (AnimatorControllerParameter param in _animator.parameters)
+        {
+            if (param.name == paramName)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
