@@ -3,9 +3,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class GunEnemyController : MonoBehaviour, IMovementController, IAttackController
+public class GunEnemyController : MonoBehaviour, IAttackController
 {
-    [SerializeField] private float _runAwayDistance = 4f;
     [SerializeField] private GameObject _bullet;
     [SerializeField] private float _shootSpeed;
     [SerializeField] private float _stunTime = 0.2f;
@@ -95,10 +94,5 @@ public class GunEnemyController : MonoBehaviour, IMovementController, IAttackCon
     {
         yield return new WaitForSeconds(.1f);
         Destroy(gameObject);
-    }
-
-    public float GetMovement()
-    {
-        return 0;
     }
 }

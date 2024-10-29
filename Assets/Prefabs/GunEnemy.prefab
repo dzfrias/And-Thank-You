@@ -14,10 +14,11 @@ GameObject:
   - component: {fileID: 2202731458319480575}
   - component: {fileID: 9091688238133541091}
   - component: {fileID: 8209240997616158717}
-  - component: {fileID: 9015396733482220592}
   - component: {fileID: 6463067411325180597}
   - component: {fileID: 5621811563887068952}
   - component: {fileID: 4117171976800035578}
+  - component: {fileID: 5853543784887973991}
+  - component: {fileID: 2469922813163353704}
   m_Layer: 6
   m_Name: GunEnemy
   m_TagString: Untagged
@@ -35,7 +36,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.32, y: -1.56, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 1533800631, guid: 6dfdab30c3daf4438809318649a49b70, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -142,7 +143,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.28, y: 1.28}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -163,7 +164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d2361cc55844724689fcce5c7e6dd9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runAwayDistance: 4
   _bullet: {fileID: 2712068378274203864, guid: 12e99f4cea9514444a37c7550a3a3d10, type: 3}
   _shootSpeed: 2
   _stunTime: 0.75
@@ -194,23 +194,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &9015396733482220592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1025725413523929570}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7311869b7bf14062af319bb8acfc406, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxSpeed: 1
-  _maxAcceleration: 35
-  _maxAirAcceleration: 20
-  _maxDeceleration: 50
-  _maxAirDeceleration: 40
 --- !u!114 &6463067411325180597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 2712068378274203864, guid: 12e99f4cea9514444a37c7550a3a3d10, type: 3}
-  spawnLocation: {x: 0, y: 0, z: 0}
+  spawnLocation: {x: -0.75, y: 0.33, z: 0}
   rotation: {x: 0, y: 0, z: 0, w: 0}
 --- !u!114 &4117171976800035578
 MonoBehaviour:
@@ -250,3 +233,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866b544921df14f7e9f2b566f31cccdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &5853543784887973991
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025725413523929570}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 56fde1d3eb7374314a98a7190f8c3056, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2469922813163353704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025725413523929570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37455dbf714b8482989a8fc94dfca637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveParameterName: Speed
+  _jumpParameterName: Jump
+  _attackParameterName: Attack
+  _fallParameterName: IsFalling

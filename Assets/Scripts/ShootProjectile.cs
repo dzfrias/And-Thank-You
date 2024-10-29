@@ -32,6 +32,13 @@ public class ShootProjectile : MonoBehaviour
 
     void FireAction()
     {
-        Instantiate(projectile,spawnLocation + new Vector3((_direction.IsRight() ? -1 : 1),0,0) + transform.position,(_direction.IsRight() ? Quaternion.identity : new Quaternion(0,1,0,180)));
+        Instantiate(projectile, spawnLocation + transform.position, _direction.IsRight() ? Quaternion.identity : new Quaternion(0, 1, 0, 180));
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Vector3 offset = spawnLocation;
+        Gizmos.DrawCube(transform.position + offset, new Vector2(0.5f, 0.5f));
     }
 }
