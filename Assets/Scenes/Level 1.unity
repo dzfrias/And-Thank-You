@@ -20333,18 +20333,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 740664185059897409, guid: 2ace73c387c6741d4ab699c42e376166, type: 3}
-      propertyPath: _hitSpawnOptions.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 740664185059897409, guid: 2ace73c387c6741d4ab699c42e376166, type: 3}
-      propertyPath: _hitSpawnOptions.Array.data[0]
-      value: 
-      objectReference: {fileID: 5339524204639315443, guid: 8b1db4733b34a45fda7723b83bbb5104, type: 3}
-    - target: {fileID: 740664185059897409, guid: 2ace73c387c6741d4ab699c42e376166, type: 3}
-      propertyPath: _hitSpawnOptions.Array.data[1]
-      value: 
-      objectReference: {fileID: 8557279896032712384, guid: 5fe5a8abaedcf4e00bee36b664e75ea2, type: 3}
     - target: {fileID: 5226781310912550129, guid: 2ace73c387c6741d4ab699c42e376166, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5

@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee2a467dba1734a18a21d228e4285ef9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackCooldown: 0.5
 --- !u!114 &5137728023827664491
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +269,9 @@ MonoBehaviour:
   attackOffset: {x: 0.75, y: 0}
   attackSize: {x: 1.54, y: 2}
   hitForce: 400
-  delay: 0.1
+  _hitSpawnOptions:
+  - {fileID: 5339524204639315443, guid: 8b1db4733b34a45fda7723b83bbb5104, type: 3}
+  - {fileID: 8557279896032712384, guid: 5fe5a8abaedcf4e00bee36b664e75ea2, type: 3}
 --- !u!114 &5121313798266860818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,3 +320,4 @@ MonoBehaviour:
   _moveParameterName: Speed
   _jumpParameterName: Jump
   _attackParameterName: Attack
+  _fallParameterName: IsFalling
