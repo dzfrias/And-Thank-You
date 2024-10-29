@@ -37,6 +37,10 @@ public class EnemyController : MonoBehaviour, IMovementController
     {
         if (!_ground.onGround) return;
 
+        if ((!Physics2D.Raycast(new Vector2(_collider.Right() + 0.1f, _collider.Bottom()), Vector2.down, 0.1f) && _movement > 0) || (!Physics2D.Raycast(new Vector2(_collider.Left() - 0.1f, _collider.Bottom()), Vector2.down, 0.1f) && _movement < 0))
+        {
+            Flip();
+        }
         var groundCollider = _ground.ground.GetComponent<Collider2D>();
         if ((_collider.Right() > groundCollider.Right() && _movement > 0) || (_collider.Left() < groundCollider.Left() && _movement < 0))
         {
@@ -53,11 +57,16 @@ public class EnemyController : MonoBehaviour, IMovementController
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.gameObject.layer == 7)
-        {
-            Flip();
-            return;
-        }
+        Collide(collision);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        Collide(collision);
+    }
+    
+    private void Collide(Collision2D collision)
+    {
         TryDoDamage(collision);
         for (int i = 0; i < collision.contactCount; i++)
         {
@@ -67,11 +76,6 @@ public class EnemyController : MonoBehaviour, IMovementController
                 _movement = normal.x > 0 ? 1 : -1;
             }
         }
-    }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        TryDoDamage(collision);
     }
 
     private void TryDoDamage(Collision2D collision)
