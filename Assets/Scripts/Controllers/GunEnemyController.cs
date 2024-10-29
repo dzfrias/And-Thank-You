@@ -99,14 +99,6 @@ public class GunEnemyController : MonoBehaviour, IMovementController, IAttackCon
 
     public float GetMovement()
     {
-        if (!_ground.onGround || _stun > 0) return 0;
-
-        var groundCollider = _ground.ground.GetComponent<Collider2D>();
-        float distance = Mathf.Abs(_player.transform.position.x - transform.position.x);
-        if (distance < _runAwayDistance)
-        {
-            return (_player.transform.position.x < transform.position.x ? 1 : -1);
-        }
         return 0;
     }
 }
