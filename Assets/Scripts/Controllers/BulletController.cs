@@ -9,6 +9,7 @@ public class BulletController : MonoBehaviour, IMovementController
     private int _direction = 1;
     [SerializeField] private int _hitSpeed;
     [SerializeField] private int _speed;
+    private bool _hit = false;
 
     private void Awake()
     {
@@ -18,6 +19,7 @@ public class BulletController : MonoBehaviour, IMovementController
 
     public void DamageAction(int dmg)
     {
+        if (_hit) return;
         StartCoroutine(_FreezeGame());
         
     }
@@ -28,6 +30,7 @@ public class BulletController : MonoBehaviour, IMovementController
         yield return new WaitForSecondsRealtime(.3f);
         Time.timeScale = 1;
         _direction *= -_hitSpeed;
+        _hit = true;
     }
 
     public float GetMovement()
