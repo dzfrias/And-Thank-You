@@ -13,7 +13,6 @@ public class EnemyController : MonoBehaviour, IMovementController
     private float _movement = 1f;
     private float _stun;
 
-
     private void Awake()
     {
         _ground = GetComponent<Ground>();
@@ -47,6 +46,7 @@ public class EnemyController : MonoBehaviour, IMovementController
             Flip();
         }
         _stun = Mathf.Max(_stun - Time.deltaTime, 0f);
+        _health.isInvincible = _stun != 0;
     }
 
     public float GetMovement()
