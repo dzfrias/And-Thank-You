@@ -13640,9 +13640,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1460600823}
   - component: {fileID: 1460600824}
+  - component: {fileID: 1460600826}
   - component: {fileID: 1460600825}
   m_Layer: 5
-  m_Name: HealthContainer
+  m_Name: HealthUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13663,10 +13664,10 @@ RectTransform:
   m_Father: {fileID: 2009421084}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 7.5, y: -15}
-  m_SizeDelta: {x: -15, y: 100}
-  m_Pivot: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 20, y: -20}
+  m_SizeDelta: {x: 80, y: 50}
+  m_Pivot: {x: 0, y: 1}
 --- !u!114 &1460600824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13679,7 +13680,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1833fc7c5ada4d3e9abbfe5da6bf5a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthIcon: {fileID: 3850496581740164524, guid: 405a7c5f196754b93a14ec525398e3bd, type: 3}
+  _images:
+  - {fileID: 1485375649, guid: e33b6fe74bea74482acb82322cc05c01, type: 3}
+  - {fileID: -1054862190, guid: e33b6fe74bea74482acb82322cc05c01, type: 3}
+  - {fileID: -1361007492, guid: e33b6fe74bea74482acb82322cc05c01, type: 3}
 --- !u!114 &1460600825
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13689,21 +13693,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 1460600822}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_StartCorner: 0
-  m_StartAxis: 0
-  m_CellSize: {x: 50, y: 50}
-  m_Spacing: {x: 10, y: 0}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -1361007492, guid: e33b6fe74bea74482acb82322cc05c01, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1460600826
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460600822}
+  m_CullTransparentMesh: 1
 --- !u!1001 &1472389055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20412,6 +20430,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 740664185059897409, guid: 2ace73c387c6741d4ab699c42e376166, type: 3}
+      propertyPath: _hitSpawnOptions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 740664185059897409, guid: 2ace73c387c6741d4ab699c42e376166, type: 3}
+      propertyPath: _hitSpawnOptions.Array.data[0]
+      value: 
+      objectReference: {fileID: 5339524204639315443, guid: 8b1db4733b34a45fda7723b83bbb5104, type: 3}
+    - target: {fileID: 740664185059897409, guid: 2ace73c387c6741d4ab699c42e376166, type: 3}
+      propertyPath: _hitSpawnOptions.Array.data[1]
+      value: 
+      objectReference: {fileID: 8557279896032712384, guid: 5fe5a8abaedcf4e00bee36b664e75ea2, type: 3}
     - target: {fileID: 5226781310912550129, guid: 2ace73c387c6741d4ab699c42e376166, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5

@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737913e225f58f441b1e8416cfc8e1b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
+  maxHealth: 2
   isInvincible: 0
 --- !u!61 &2202731458319480575
 BoxCollider2D:

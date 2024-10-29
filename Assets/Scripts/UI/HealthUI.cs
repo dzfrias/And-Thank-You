@@ -1,16 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(Image))]
 public class HealthUI : MonoBehaviour
 {
-    [SerializeField] private GameObject _healthIcon;
+    [SerializeField] private List<Sprite> _images;
 
     private Health _playerHealth;
+    private Image _image;
 
     private void Start()
     {
+        _image = GetComponent<Image>();
+        _playerHealth = gameObject.Player().health;
         UpdateHealth();
         _playerHealth.OnTakeDamage += UpdateHealth;
         _playerHealth.OnHeal += UpdateHealth;
@@ -24,22 +29,8 @@ public class HealthUI : MonoBehaviour
 
     private void UpdateHealth(int damage = 0)
     {
-        _playerHealth = gameObject.Player().health;
-        if (transform.childCount > _playerHealth.health)
-        {
-            for (int i = _playerHealth.health; i < transform.childCount; i++)
-            {
-                Destroy(transform.GetChild(i).gameObject);
-            }
-        }
-
-        if (transform.childCount < _playerHealth.health)
-        {
-            var count = transform.childCount;
-            for (int i = count; i < _playerHealth.health; i++)
-            {
-                Instantiate(_healthIcon, transform);
-            }
-        }
+        Health health = gameObject.Player().health;
+        Sprite sprite = _images[health.health - 1];
+        _image.sprite = sprite;
     }
 }

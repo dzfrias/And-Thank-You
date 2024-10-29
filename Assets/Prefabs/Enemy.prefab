@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7311869b7bf14062af319bb8acfc406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 3
+  _maxSpeed: 2
   _maxAcceleration: 35
   _maxAirAcceleration: 20
   _maxDeceleration: 50
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 737913e225f58f441b1e8416cfc8e1b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 2
   isInvincible: 0
 --- !u!114 &1295493657864929151
 MonoBehaviour:
