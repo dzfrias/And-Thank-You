@@ -15,12 +15,14 @@ public class GunEnemyController : MonoBehaviour, IAttackController
     private float _stun;
     private float _attackCooldown;
     private PlayerRef _player;
+    private Animator _animator;
 
     public event Action OnAttack;
 
     private void Start()
     {
         _player = gameObject.Player();
+        _animator = GetComponent<Animator>();
         StartCoroutine(_Attack());
     }
 
@@ -83,6 +85,11 @@ public class GunEnemyController : MonoBehaviour, IAttackController
     private void Update()
     {
         _stun = Mathf.Max(_stun - Time.deltaTime, 0f);
+        _health.isInvincible = _stun != 0;
+        if (_animator)
+        {
+            _animator.speed = _stun != 0 ? 0 : 1;
+        }
     }
 
     private void OnDie()

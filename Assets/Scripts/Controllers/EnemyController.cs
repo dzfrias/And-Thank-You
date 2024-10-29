@@ -10,11 +10,13 @@ public class EnemyController : MonoBehaviour, IMovementController
     private Ground _ground;
     private Collider2D _collider;
     private Health _health;
+    private Animator _animator;
     private float _movement = 1f;
     private float _stun;
 
     private void Awake()
     {
+        _animator = GetComponent<Animator>();
         _ground = GetComponent<Ground>();
         _collider = GetComponent<Collider2D>();
         _health = GetComponent<Health>();
@@ -47,6 +49,10 @@ public class EnemyController : MonoBehaviour, IMovementController
         }
         _stun = Mathf.Max(_stun - Time.deltaTime, 0f);
         _health.isInvincible = _stun != 0;
+        if (_animator)
+        {
+            _animator.speed = _stun != 0 ? 0 : 1;
+        }
     }
 
     public float GetMovement()
